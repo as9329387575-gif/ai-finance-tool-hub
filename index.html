@@ -1,0 +1,404 @@
+Here is an enhanced HTML document for the 'Multi Tool Hub' landing page. It features a modern, premium design with a glass-morphism header, animated cards, and interactive tool buttons.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Multi Tool Hub · premium suite</title>
+  <style>
+    /* ---------- reset & base ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.2s ease-in-out;
+    }
+
+    body {
+      background-color: #1E1E2F;
+      color: #EAEAEA;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Poppins', sans-serif;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.03) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ---------- header with glassmorphism & shine ---------- */
+    .main-header {
+      background: rgba(43, 45, 66, 0.65);
+      backdrop-filter: blur(10px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(180%);
+      border-radius: 48px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 150%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.04), transparent 60%);
+      pointer-events: none;
+    }
+
+    .main-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #ffffff 0%, #FFD700 85%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+      position: relative;
+      display: inline-block;
+    }
+
+    .main-header h1::before {
+      content: "✦";
+      font-size: 2.2rem;
+      margin-right: 12px;
+      color: #FFD700;
+      background: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+    }
+
+    .main-header p {
+      font-size: 1.15rem;
+      margin-top: 0.5rem;
+      color: #D0D0EB;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      opacity: 0.9;
+    }
+
+    .main-header .badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: rgba(255, 215, 0, 0.12);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #FFD700;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    /* ---------- grid: 2 columns desktop ---------- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    /* ---------- tool card with depth + hover animation ---------- */
+    .tool-card {
+      background: #3A3D5B;
+      background: linear-gradient(145deg, #3A3D5B, #323554);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 215, 0, 0.08);
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), background 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
+
+    /* gold glow on hover + bg change */
+    .tool-card:hover {
+      background: #FFD700;
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 32px 48px -16px rgba(255, 215, 0, 0.45), 0 0 0 1px rgba(255, 215, 0, 0.5);
+    }
+
+    /* all text turns dark navy on hover */
+    .tool-card:hover h2,
+    .tool-card:hover p {
+      color: #1E1E2F;
+    }
+
+    .tool-card h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.3px;
+      color: #EAEAEA;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-card h2::before {
+      content: "⚡";
+      font-size: 1.6rem;
+      filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.2));
+      opacity: 0.7;
+    }
+
+    .tool-card:hover h2::before {
+      filter: drop-shadow(0 0 8px rgba(30, 30, 47, 0.3));
+      opacity: 1;
+    }
+
+    .tool-card p {
+      font-size: 0.95rem;
+      color: #C5C5E0;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      flex-grow: 1;
+      opacity: 0.9;
+    }
+
+    /* ---------- button : gold + rounded + bold ---------- */
+    .tool-btn {
+      background: #FFD700;
+      border: none;
+      padding: 0.9rem 0;
+      width: 100%;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: 60px;
+      cursor: pointer;
+      color: #1E1E2F;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 215, 0, 0.2);
+      transition: all 0.25s;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    /* deeper gold on hover + slight lift */
+    .tool-btn:hover {
+      background: #E6C200;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    .tool-btn:active {
+      transform: scale(0.97);
+    }
+
+    .tool-btn::after {
+      content: "→";
+      font-size: 1.2rem;
+      transition: transform 0.25s;
+      display: inline-block;
+    }
+
+    .tool-btn:hover::after {
+      transform: translateX(6px);
+    }
+
+    /* when card is gold, button becomes dark navy with gold text */
+    .tool-card:hover .tool-btn {
+      background: #1E1E2F;
+      color: #FFD700;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .tool-card:hover .tool-btn::after {
+      color: #FFD700;
+    }
+
+    /* ---------- footer ---------- */
+    .footer-note {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 1.5rem 0 0.5rem;
+      font-size: 0.9rem;
+      color: #9a9bc2;
+      border-top: 1px solid rgba(255, 215, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span {
+      background: rgba(255, 215, 0, 0.06);
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #FFD700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- responsive : single column ---------- */
+    @media (max-width: 768px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .main-header {
+        padding: 1.5rem 1rem;
+        border-radius: 32px;
+        margin-bottom: 2.5rem;
+      }
+      .main-header h1 {
+        font-size: 2.2rem;
+      }
+      .main-header h1::before {
+        font-size: 1.6rem;
+        margin-right: 8px;
+      }
+      .main-header p {
+        font-size: 1rem;
+      }
+      .tool-card {
+        padding: 1.6rem 1.4rem;
+      }
+      .tool-card h2 {
+        font-size: 1.5rem;
+      }
+      .tool-btn {
+        font-size: 0.95rem;
+        padding: 0.8rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-header h1 {
+        font-size: 1.8rem;
+      }
+      .tool-card h2 {
+        font-size: 1.3rem;
+      }
+      .tool-card p {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* accessibility */
+    .tool-btn:focus-visible {
+      outline: 3px solid #FFD700;
+      outline-offset: 4px;
+    }
+
+    /* small glow on card borders */
+    .tool-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      padding: 1px;
+      background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), transparent 70%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+    .tool-card:hover::after {
+      opacity: 0.9;
+      background: linear-gradient(145deg, rgba(255, 215, 0, 0.5), #FFD700);
+    }
+
+    /* subtle floating animation for header */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0px); }
+    }
+    .main-header h1 {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="main-header">
+    <h1>Multi Tool Hub</h1>
+    <p>Premium utilities · smart, fast & beautifully crafted</p>
+    <div class="badge">✦ 10 essential tools ✦</div>
+  </header>
+
+  <div class="tools-grid" id="toolsGrid"></div>
+
+  <div class="footer-note">
+    <span>⚡ interactive preview</span>
+    <span>🎯 click any button → placeholder redirect</span>
+  </div>
+</div>
+
+<script>
+  // --------------------------------------------------------------
+  // tool data : 10 tools with descriptions
+  // --------------------------------------------------------------
+  const tools = [
+    { name: "EMI Calculator", desc: "Monthly installment with principal & interest breakdown." },
+    { name: "SIP Calculator", desc: "Future value of systematic investments with step-up." },
+    { name: "Loan Eligibility", desc: "Check personal/home loan eligibility based on income." },
+    { name: "Salary Breakup", desc: "CTC, allowances, deductions & in-hand salary analysis." },
+    { name: "GST Calculator", desc: "Compute GST inclusive/exclusive for any product." },
+    { name: "Income Tax", desc: "Tax liability as per new/old regime with deductions." },
+    { name: "Age Calculator", desc: "Exact age in years, months & days from DOB." },
+    { name: "Percentage", desc: "Find % of a number, increase, decrease & ratio." },
+    { name: "Unit Converter", desc: "Length, mass, volume, temperature & more." },
+    { name: "Currency", desc: "Live exchange rates for major global currencies." }
+  ];
+
+  const grid = document.getElementById('toolsGrid');
+
+  function buildCards() {
+    let html = '';
+    for (let t of tools) {
+      html += `
+        <div class="tool-card" data-tool="${t.name}">
+          <h2>${t.name}</h2>
+          <p>${t.desc}</p>
+          <button class="tool-btn" data-toolname="${t.name}">Launch ${t.name.split(' ')[0]}</button>
+        </div>
+      `;
+    }
+    grid.innerHTML = html;
+
+    // attach click events to all buttons
+    document.querySelectorAll('.tool-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const toolName = btn.getAttribute('data-toolname') || 
+                         btn.closest('.tool-card')?.querySelector('h2')?.innerText || 
+                         'Tool';
+        alert(`🚀 Redirecting to "${toolName}" · full interactive version coming soon!`);
+      });
+    });
+  }
+
+  buildCards();
+</script>
+</body>
+</html>
+```
